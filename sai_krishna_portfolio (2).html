@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sai Krishna Venkata Subramanian | Biotechnology Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --teal: #0F6E56;
+    --teal-light: #E1F5EE;
+    --teal-mid: #1D9E75;
+    --teal-pale: #9FE1CB;
+    --dark: #0D1B17;
+    --dark2: #1A2E27;
+    --text: #1C2C26;
+    --muted: #4A6B5E;
+    --border: rgba(15, 110, 86, 0.18);
+    --surface: #F5FAF8;
+    --white: #FFFFFF;
+    --accent: #5DCAA5;
+    --nav-h: 68px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6vw;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.4rem;
+    color: var(--teal);
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal);
+    color: white !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.04em !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--dark) !important; color: white !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: calc(var(--nav-h) + 4rem) 6vw 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, #E1F5EE 0%, transparent 65%),
+                radial-gradient(ellipse 40% 40% at 10% 80%, #9FE1CB22 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .dna-pattern {
+    position: absolute; right: 3vw; top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.07;
+    width: 340px; height: 480px;
+  }
+  .hero-content { position: relative; max-width: 680px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--teal-light);
+    color: var(--teal);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal-mid); }
+  h1.hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    margin-bottom: 0.6rem;
+  }
+  h1.hero-name em {
+    font-style: italic;
+    color: var(--teal);
+  }
+  .hero-tagline {
+    font-size: 1.15rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    max-width: 520px;
+  }
+  .hero-stats {
+    display: flex; gap: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+    margin-top: 0.1rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--teal);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex; align-items: center; gap: 0.4rem;
+  }
+  .btn-primary:hover { background: var(--dark); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1.5px solid var(--border);
+    color: var(--text);
+    padding: 0.8rem 2rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 6vw; }
+  section:nth-child(even) { background: var(--surface); }
+  .section-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal-mid);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  h2.section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--dark);
+    margin-bottom: 0.6rem;
+  }
+  .section-sub {
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 540px;
+    margin-bottom: 3.5rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  .about-text p strong { color: var(--text); font-weight: 500; }
+  .skills-cloud {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    margin-top: 1.5rem;
+  }
+  .skill-tag {
+    background: var(--teal-light);
+    color: var(--teal);
+    font-size: 0.78rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 100px;
+    font-weight: 400;
+  }
+  .about-card-stack { display: flex; flex-direction: column; gap: 1rem; }
+  .about-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.4rem 1.6rem;
+  }
+  .about-card-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--teal-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  .about-card h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 0.25rem; }
+  .about-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.5; }
+
+  /* ── EDUCATION ── */
+  .edu-items { display: flex; flex-direction: column; gap: 1.5rem; }
+  .edu-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .edu-item::before {
+    content: '';
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--teal);
+    border-radius: 4px 0 0 4px;
+  }
+  .edu-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+  .edu-degree { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--dark); line-height: 1.2; }
+  .edu-school { font-size: 0.9rem; color: var(--teal); font-weight: 500; margin-top: 0.25rem; }
+  .edu-meta { text-align: right; }
+  .edu-gpa {
+    background: var(--teal);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.3rem 0.9rem;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 0.3rem;
+  }
+  .edu-period { font-size: 0.8rem; color: var(--muted); }
+  .edu-details { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+  .edu-courses {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .course-tag {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 0.78rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+  }
+  .award-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: #FFF9E6;
+    color: #B07800;
+    font-size: 0.78rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    margin-top: 0.75rem;
+  }
+  .award-badge::before { content: '★'; font-size: 0.7rem; }
+
+  /* ── RESEARCH / EXPERIENCE ── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 0.5rem; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .tl-item {
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+  .tl-dot {
+    position: absolute; left: -2.45rem; top: 0.35rem;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+  .tl-period { font-size: 0.78rem; color: var(--teal-mid); font-weight: 500; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+  .tl-role { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--dark); margin-bottom: 0.15rem; }
+  .tl-org { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.8rem; }
+  .tl-body { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+  .tl-body ul { padding-left: 1.2rem; margin-top: 0.5rem; }
+  .tl-body li { margin-bottom: 0.4rem; }
+  .outcome-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--teal-light);
+    color: var(--teal);
+    font-size: 0.8rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 8px;
+    margin-top: 0.75rem;
+    font-weight: 500;
+  }
+
+  /* ── PUBLICATIONS ── */
+  .pub-list { display: flex; flex-direction: column; gap: 1.2rem; }
+  .pub-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem 1.8rem;
+    display: flex; gap: 1.5rem; align-items: flex-start;
+  }
+  .pub-year {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--teal-pale);
+    min-width: 52px;
+    line-height: 1;
+    padding-top: 0.1rem;
+  }
+  .pub-content { flex: 1; }
+  .pub-journal {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--teal-mid);
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .if-badge {
+    background: var(--teal-light);
+    color: var(--teal);
+    font-size: 0.7rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 100px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .pub-title { font-size: 0.95rem; font-weight: 500; color: var(--dark); margin-bottom: 0.4rem; line-height: 1.4; }
+  .pub-authors { font-size: 0.83rem; color: var(--muted); }
+  .pub-doi { font-size: 0.8rem; color: var(--teal); text-decoration: none; margin-top: 0.5rem; display: inline-block; }
+  .pub-doi:hover { text-decoration: underline; }
+
+  /* ── HONORS ── */
+  .honors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .honor-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem;
+  }
+  .honor-icon { font-size: 1.5rem; margin-bottom: 0.7rem; }
+  .honor-year { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+  .honor-title { font-size: 0.95rem; font-weight: 500; color: var(--dark); margin-bottom: 0.2rem; }
+  .honor-org { font-size: 0.82rem; color: var(--muted); }
+
+  /* ── CONFERENCES ── */
+  .conf-list { display: flex; flex-direction: column; gap: 0.8rem; }
+  .conf-item {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.1rem 1.4rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .conf-year-pill {
+    background: var(--teal-light);
+    color: var(--teal);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.2rem 0.65rem;
+    border-radius: 100px;
+    min-width: fit-content;
+    margin-top: 0.15rem;
+  }
+  .conf-text { font-size: 0.9rem; color: var(--text); line-height: 1.5; }
+  .conf-venue { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+  }
+  #contact .section-label { color: var(--teal-pale); }
+  #contact h2.section-title { color: white; }
+  #contact .section-sub { color: rgba(255,255,255,0.55); margin-left: auto; margin-right: auto; }
+  .contact-links {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.85);
+    padding: 0.7rem 1.4rem;
+    border-radius: 100px;
+    text-decoration: none;
+    font-size: 0.88rem;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .contact-link:hover { background: var(--teal); border-color: var(--teal); color: white; }
+  .contact-link svg { width: 16px; height: 16px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-stats { gap: 1.5rem; }
+    .pub-item { flex-direction: column; gap: 0.5rem; }
+    .pub-year { font-size: 1rem; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-content > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero-content > *:nth-child(6) { animation-delay: 0.6s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">SKV</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#honors">Honors</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <!-- DNA decoration -->
+  <svg class="dna-pattern" viewBox="0 0 200 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#0F6E56" stroke-width="2">
+      <path d="M40 20 Q160 60 40 100 Q160 140 40 180 Q160 220 40 260 Q160 300 40 340 Q160 380 40 420 Q160 460 40 480"/>
+      <path d="M160 20 Q40 60 160 100 Q40 140 160 180 Q40 220 160 260 Q40 300 160 340 Q40 380 160 420 Q40 460 160 480"/>
+      <line x1="40" y1="20" x2="160" y2="20"/>
+      <line x1="100" y1="60" x2="100" y2="60" stroke-width="6"/>
+      <line x1="40" y1="100" x2="160" y2="100"/>
+      <line x1="40" y1="180" x2="160" y2="180"/>
+      <line x1="40" y1="260" x2="160" y2="260"/>
+      <line x1="40" y1="340" x2="160" y2="340"/>
+      <line x1="40" y1="420" x2="160" y2="420"/>
+    </g>
+    <circle cx="40" cy="20" r="5" fill="#0F6E56"/>
+    <circle cx="160" cy="20" r="5" fill="#0F6E56"/>
+    <circle cx="100" cy="60" r="4" fill="#1D9E75"/>
+    <circle cx="40" cy="100" r="5" fill="#0F6E56"/>
+    <circle cx="160" cy="100" r="5" fill="#0F6E56"/>
+    <circle cx="100" cy="140" r="4" fill="#1D9E75"/>
+    <circle cx="40" cy="180" r="5" fill="#0F6E56"/>
+    <circle cx="160" cy="180" r="5" fill="#0F6E56"/>
+    <circle cx="100" cy="220" r="4" fill="#1D9E75"/>
+    <circle cx="40" cy="260" r="5" fill="#0F6E56"/>
+    <circle cx="160" cy="260" r="5" fill="#0F6E56"/>
+    <circle cx="100" cy="300" r="4" fill="#1D9E75"/>
+    <circle cx="40" cy="340" r="5" fill="#0F6E56"/>
+    <circle cx="160" cy="340" r="5" fill="#0F6E56"/>
+    <circle cx="100" cy="380" r="4" fill="#1D9E75"/>
+    <circle cx="40" cy="420" r="5" fill="#0F6E56"/>
+    <circle cx="160" cy="420" r="5" fill="#0F6E56"/>
+  </svg>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Master of Biotechnology · UQ Brisbane</div>
+    <h1 class="hero-name">Sai Krishna<br><em>Venkata Subramanian</em></h1>
+    <p class="hero-tagline">Regenerative Medicine · Drug Delivery Systems · Biomaterial Fabrication</p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">6.75</div>
+        <div class="stat-label">GPA / 7.0 at UQ</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Research publications</div>
+      </div>
+
+    </div>
+    <div class="hero-actions">
+      <a href="mailto:sai813764@gmail.com" class="btn-primary">Get in touch ↗</a>
+      <a href="https://www.linkedin.com/in/sai-krishna-307972223/" target="_blank" class="btn-outline">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About me</div>
+  <h2 class="section-title">Building the science<br>of tomorrow's medicine</h2>
+  <p class="section-sub">My journey across regenerative medicine, biomaterials, and quality science.</p>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>👋 Hi, I'm <strong>Sai Krishna Venkata Subramanian</strong>, a Master of Biotechnology student at <strong>The University of Queensland</strong> (GPA 6.75/7.0) specialising in Medical Biotechnology.</p>
+      <p>I bring over a year of hands-on research in <strong>3D-printed scaffolds, biomaterial fabrication, and drug delivery systems</strong>, with work published in high-impact journals.</p>
+      <p>Currently, I complement my technical expertise with practical <strong>quality control and food safety experience</strong> at Coles Group, demonstrating adaptability across both research and industry settings.</p>
+      <p>I am actively seeking a <strong>winter internship</strong> to contribute to innovative biotech solutions in Australia. Let's connect and advance science together!</p>
+      <div class="skills-cloud">
+        <span class="skill-tag">RNA Isolation & RT-qPCR</span>
+        <span class="skill-tag">Cell Culture</span>
+        <span class="skill-tag">3D Printing / CAD/CAM</span>
+        <span class="skill-tag">MTT & FDA Cytotoxicity</span>
+        <span class="skill-tag">Muse Cell Analysis</span>
+        <span class="skill-tag">Scratch & Boyden Assays</span>
+        <span class="skill-tag">rDNA Cloning</span>
+        <span class="skill-tag">Plasmid Vectors</span>
+        <span class="skill-tag">ChemSketch</span>
+        <span class="skill-tag">ImageJ</span>
+        <span class="skill-tag">Quality Control / QA</span>
+        <span class="skill-tag">FIFO Inventory</span>
+        <span class="skill-tag">Food Safety Standards</span>
+        <span class="skill-tag">OH&S Protocols</span>
+      </div>
+    </div>
+    <div class="about-card-stack">
+      <div class="about-card">
+        <div class="about-card-icon">🔬</div>
+        <h4>Research & Fabrication</h4>
+        <p>Fabricated PLA scaffolds via 3D printing; characterised drug delivery systems and assessed biomaterial biocompatibility for bone and wound-healing applications.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">📄</div>
+        <h4>Published Articles</h4>
+        <p>Two peer-reviewed publications (IF 7.7 and 4.9) from undergraduate research — evidence of real-world research impact.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🏆</div>
+        <h4>Academic Excellence</h4>
+        <p>Dean's Commendation at UQ, Chancellor's Award at SRMIST, and University Rank Holder with a CGPA of 9.55/10 at undergraduate level.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🌏</div>
+        <h4>Industry Adaptability</h4>
+        <p>Balancing rigorous postgraduate studies with professional part-time work at Coles Group, applying quality control and safety standards in a high-volume retail environment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Education</div>
+  <h2 class="section-title">Academic milestones</h2>
+  <p class="section-sub">Degrees and qualifications that form the foundation of my scientific career.</p>
+  <div class="edu-items">
+
+    <div class="edu-item">
+      <div class="edu-header">
+        <div>
+          <div class="edu-degree">Master of Biotechnology (Medical Biotechnology)</div>
+          <div class="edu-school">The University of Queensland · St Lucia, Australia</div>
+        </div>
+        <div class="edu-meta">
+          <div class="edu-gpa">GPA 6.75 / 7.0</div>
+          <div class="edu-period">July 2025 – Present</div>
+        </div>
+      </div>
+      <div class="edu-details">
+        Specialising in quality management systems, biologics, drug discovery and development, and biomanufacturing technology.
+      </div>
+      <div class="edu-courses">
+        <span class="course-tag">Quality Management Systems (BIOT7031)</span>
+        <span class="course-tag">Biologics (BIOT7018)</span>
+        <span class="course-tag">Drug Discovery & Development (BIOT7030)</span>
+        <span class="course-tag">Biomanufacturing Technology (BIOT7061)</span>
+      </div>
+      <div class="award-badge">Dean's Commendation for Academic Excellence (2026)</div>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-header">
+        <div>
+          <div class="edu-degree">B.Tech in Biotechnology · Regenerative Medicine</div>
+          <div class="edu-school">SRM Institute of Science and Technology (SRMIST) · India</div>
+        </div>
+        <div class="edu-meta">
+          <div class="edu-gpa">CGPA 9.55 / 10</div>
+          <div class="edu-period">Sept 2021 – May 2025</div>
+        </div>
+      </div>
+      <div class="edu-details">
+        Specialisation in advanced tissue engineering and preclinical application of biomaterials. Graduated as a University Rank Holder.
+      </div>
+      <div class="edu-courses">
+        <span class="course-tag">Tissue Engineering</span>
+        <span class="course-tag">Biomaterials Science</span>
+        <span class="course-tag">Regenerative Medicine</span>
+        <span class="course-tag">Molecular Biology</span>
+        <span class="course-tag">Cell Biology</span>
+      </div>
+      <div class="award-badge">University Rank Holder · Chancellor's Award for Excellence in Undergraduate Research</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-label">Research & Work Experience</div>
+  <h2 class="section-title">Research & Work Experience</h2>
+  <p class="section-sub">Hands-on experience in tissue engineering, cancer research, and industry quality control.</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+    <!-- Research timeline -->
+    <div>
+      <h3 style="font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;">Research Experience</h3>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Oct 2023 – May 2025</div>
+          <div class="tl-role">Undergraduate Student Researcher</div>
+          <div class="tl-org">Tissue Engineering and Cancer Research Laboratory (TECRL), SRMIST · Guide: Dr N. Selvamurugan</div>
+          <div class="tl-body">
+            <strong style="color:var(--text);font-weight:500;">Major Project — Bone Regeneration</strong>
+            <ul>
+              <li>Fabricated high-precision PLA scaffolds using 3D printing technology and CAD/CAM software.</li>
+              <li>Evaluated physicochemical properties to assess drug delivery system efficacy.</li>
+              <li>Performed molecular-level studies determining bone regeneration potential of phenolic phytocompounds.</li>
+            </ul>
+            <div class="outcome-badge">✓ Scaffolds demonstrated new bone formation potential in tissue engineering</div>
+            <br>
+            <strong style="color:var(--text);font-weight:500;">Minor Project — Wound Healing</strong>
+            <ul>
+              <li>Synthesised biocomposite sponges using sol-gel and freeze-drying methods.</li>
+              <li>Conducted MIC testing against <em>E. coli</em> and <em>S. aureus</em>.</li>
+              <li>Verified antimicrobial and superior healing properties of alkaloid-loaded sponges.</li>
+            </ul>
+            <div class="outcome-badge">✓ Sponges demonstrated superior wound healing and antimicrobial properties</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Work timeline -->
+    <div>
+      <h3 style="font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;">Work Experience</h3>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Sept 2025 – Present</div>
+          <div class="tl-role">Fresh Produce Team Member</div>
+          <div class="tl-org">The Coles Group · Fairfield, Brisbane (Part-time)</div>
+          <div class="tl-body">
+            <ul>
+              <li><strong style="color:var(--text);font-weight:500;">Quality Control:</strong> Monitor produce freshness via FIFO rotation; adhere to strict Food Safety Standards.</li>
+              <li><strong style="color:var(--text);font-weight:500;">Operations:</strong> High-standard merchandising, stock replenishment, and delivery management.</li>
+              <li><strong style="color:var(--text);font-weight:500;">Safety & Compliance:</strong> Strict adherence to OH&S protocols and Food Safety Standards.</li>
+              <li><strong style="color:var(--text);font-weight:500;">Adaptability:</strong> Balancing rigorous academic demands with consistent professional performance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;margin-top:2.5rem;">Volunteering</h3>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">2026</div>
+          <div class="tl-role">Event Volunteer</div>
+          <div class="tl-org">MND Queensland – Walk to Defeat MND</div>
+          <div class="tl-body">Supported advocacy and fundraising efforts for motor neurone disease awareness in Brisbane.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">2016 – 2020</div>
+          <div class="tl-role">Member & Rajya Puraskar Awardee</div>
+          <div class="tl-org">Bharat Scouts and Guides · India</div>
+          <div class="tl-body">Recipient of the Governor's Award; developed leadership, teamwork, and community service skills over four years.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <h2 class="section-title">Key skills & strengths</h2>
+  <p class="section-sub">Technical competencies and soft skills developed across research and industry.</p>
+
+  <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+    <div style="background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem 2rem;">
+      <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal-mid);font-weight:500;margin-bottom:1rem;">Molecular Biology</div>
+      <div class="skills-cloud">
+        <span class="skill-tag">RNA Isolation</span>
+        <span class="skill-tag">cDNA Synthesis</span>
+        <span class="skill-tag">RT-qPCR</span>
+        <span class="skill-tag">rDNA Cloning</span>
+        <span class="skill-tag">Plasmid Vectors</span>
+      </div>
+    </div>
+
+    <div style="background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem 2rem;">
+      <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal-mid);font-weight:500;margin-bottom:1rem;">Cell Biology</div>
+      <div class="skills-cloud">
+        <span class="skill-tag">Cell Culture</span>
+        <span class="skill-tag">Cytotoxicity — MTT Assay</span>
+        <span class="skill-tag">FDA Staining</span>
+        <span class="skill-tag">Muse Cell Analysis</span>
+        <span class="skill-tag">Scratch Assay</span>
+        <span class="skill-tag">Boyden Chamber Assay</span>
+        <span class="skill-tag">Protein Estimation</span>
+      </div>
+    </div>
+
+    <div style="background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem 2rem;">
+      <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal-mid);font-weight:500;margin-bottom:1rem;">Technical Tools</div>
+      <div class="skills-cloud">
+        <span class="skill-tag">3D Printing (CAD/CAM)</span>
+        <span class="skill-tag">ChemSketch</span>
+        <span class="skill-tag">ImageJ</span>
+      </div>
+    </div>
+
+    <div style="background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem 2rem;">
+      <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal-mid);font-weight:500;margin-bottom:1rem;">Industry & Compliance</div>
+      <div class="skills-cloud">
+        <span class="skill-tag">Quality Control / QA</span>
+        <span class="skill-tag">FIFO Inventory Management</span>
+        <span class="skill-tag">Food Safety Standards</span>
+        <span class="skill-tag">OH&S Protocols</span>
+      </div>
+    </div>
+
+    <div style="background: white; border: 1px solid var(--border); border-radius: 16px; padding: 1.6rem 2rem;">
+      <div style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal-mid);font-weight:500;margin-bottom:1rem;">Soft Skills</div>
+      <div class="skills-cloud">
+        <span class="skill-tag">Strategic Leadership</span>
+        <span class="skill-tag">Effective Communication</span>
+        <span class="skill-tag">Adaptability</span>
+        <span class="skill-tag">Collaborative Problem Solving</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-label">Publications</div>
+  <h2 class="section-title">Research contributions</h2>
+  <p class="section-sub">Peer-reviewed journal publications from undergraduate research.</p>
+  <div class="pub-list">
+
+    <div class="pub-item">
+      <div class="pub-year">2025</div>
+      <div class="pub-content">
+        <div class="pub-journal">
+          Journal of Drug Delivery Science and Technology
+          <span class="if-badge">IF: 4.9</span>
+        </div>
+        <div class="pub-title">Nuciferine-loaded alginate/chitosan sponges as a drug delivery system for effective wound healing</div>
+        <div class="pub-authors">Raaju, A., Chidambaram, D., Nanthanalaxmi, M., Subashini, V., <strong>Sai Krishna, V.</strong>, Hariharan, A., Lekhavadhani, S., Shanmugavadivu, A., Gopichandran, N., & Selvamurugan, N. (2026). Vol. 115, 107708.</div>
+        <a href="https://doi.org/10.1016/J.JDDST.2025.107708" target="_blank" class="pub-doi">DOI: 10.1016/J.JDDST.2025.107708 ↗</a>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-year">2024</div>
+      <div class="pub-content">
+        <div class="pub-journal">
+          International Journal of Biological Macromolecules
+          <span class="if-badge">IF: 7.7</span>
+        </div>
+        <div class="pub-title">Role of crosslinkers in advancing chitosan-based biocomposite scaffolds for bone tissue engineering: A comprehensive review</div>
+        <div class="pub-authors">Krishna, V. S., Subashini, V., Hariharan, A., Chidambaram, D., Raaju, A., Gopichandran, N., Nanthanalaxmi, M. P., Lekhavadhani, S., Shanmugavadivu, A., & Selvamurugan, N. (2024). Vol. 283, 137625.</div>
+        <a href="https://doi.org/10.1016/j.ijbiomac.2024.137625" target="_blank" class="pub-doi">DOI: 10.1016/j.ijbiomac.2024.137625 ↗</a>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- HONORS -->
+<section id="honors">
+  <div class="section-label">Recognition</div>
+  <h2 class="section-title">Honors & awards</h2>
+  <p class="section-sub">Awards and recognition received across academia and research.</p>
+  <div class="honors-grid">
+    <div class="honor-card">
+      <div class="honor-icon">🎓</div>
+      <div class="honor-year">2026 · The University of Queensland</div>
+      <div class="honor-title">Dean's Commendation for Academic Excellence</div>
+      <div class="honor-org">Awarded for outstanding academic performance in the Master of Biotechnology program.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">🏅</div>
+      <div class="honor-year">2025 · SRMIST</div>
+      <div class="honor-title">Chancellor's Award for Excellence in Undergraduate Research</div>
+      <div class="honor-org">Recognised for outstanding contributions to tissue engineering and biomaterial research.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">🥇</div>
+      <div class="honor-year">2025 · SRMIST</div>
+      <div class="honor-title">University Rank Holder</div>
+      <div class="honor-org">Graduated in the top rank of the Biotechnology cohort with a CGPA of 9.55/10.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">🎤</div>
+      <div class="honor-year">2024 · BSACIST, Chennai</div>
+      <div class="honor-title">Best Oral Presentation Award</div>
+      <div class="honor-org">SMaGEES International Conference on Smart Materials for Green Energy & Environmental Sustainability.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">💰</div>
+      <div class="honor-year">2024 · SRMIST</div>
+      <div class="honor-title">Performance-Based Scholarship</div>
+      <div class="honor-org">Awarded for two consecutive years based on outstanding academic performance.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">🖥️</div>
+      <div class="honor-year">2023 · IIT Kanpur (NPTEL)</div>
+      <div class="honor-title">Elite + Silver Certificate</div>
+      <div class="honor-org">Online certification in Cell Culture Technologies.</div>
+    </div>
+    <div class="honor-card">
+      <div class="honor-icon">⚜️</div>
+      <div class="honor-year">2019 · Bharat Scouts and Guides</div>
+      <div class="honor-title">Rajya Puraskar Award (Governor's Award)</div>
+      <div class="honor-org">Recognised for excellence in leadership, community service, and skill development.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFERENCES -->
+<section id="conferences">
+  <div class="section-label">Conferences & Seminars</div>
+  <h2 class="section-title">Community & presence</h2>
+  <p class="section-sub">Conferences attended, presentations delivered, and workshops organised.</p>
+  <div class="conf-list">
+    <div class="conf-item">
+      <span class="conf-year-pill">2026</span>
+      <div>
+        <div class="conf-text">Contamination Control & Quality Risk Management Conference, organised by the Life Sciences Queensland (LSQ).</div>
+        <div class="conf-venue">Translational Research Institute (TRI) · Brisbane, QLD</div>
+      </div>
+    </div>
+    <div class="conf-item">
+      <span class="conf-year-pill">2025</span>
+      <div>
+        <div class="conf-text">International Conference on Advances in Chitin & Chitosan Research (ICACCR) — 11th Indian Chitin Chitosan Symposium.</div>
+        <div class="conf-venue">University of Hyderabad · India</div>
+      </div>
+    </div>
+    <div class="conf-item">
+      <span class="conf-year-pill">2024</span>
+      <div>
+        <div class="conf-text">International Conference on Smart Materials for Green Energy & Environmental Sustainability (SMaGEES 2024) — <strong>Best Oral Presentation Award</strong>.</div>
+        <div class="conf-venue">B.S. Abdur Rahman Crescent Institute of Science and Technology (BSACIST) · Chennai</div>
+      </div>
+    </div>
+    <div class="conf-item">
+      <span class="conf-year-pill">2024</span>
+      <div>
+        <div class="conf-text">Organiser — Hands-on Training on Cell Viability and Cytotoxicity Studies Workshop.</div>
+        <div class="conf-venue">TECRL · SRMIST · India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's connect</div>
+  <h2 class="section-title">Seeking a winter internship</h2>
+  <p class="section-sub">Open to innovative biotech and research opportunities in Australia. Feel free to reach out!</p>
+  <div class="contact-links">
+    <a href="mailto:sai813764@gmail.com" class="contact-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      sai813764@gmail.com
+    </a>
+    <a href="tel:+61478108113" class="contact-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      (+61) 478 108 113
+    </a>
+    <a href="https://www.linkedin.com/in/sai-krishna-307972223/" target="_blank" class="contact-link">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://doi.org/10.1016/j.ijbiomac.2024.137625" target="_blank" class="contact-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+      View Publications
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sai Krishna Venkata Subramanian · South Brisbane, QLD 4101, Australia</p>
+</footer>
+
+</body>
+</html>
